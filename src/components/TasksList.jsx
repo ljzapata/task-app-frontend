@@ -1,3 +1,5 @@
+import TaskItem from './TaskItem';
+
 const TaskList = ({ tasks = [], onToggle, onDelete }) => {
   // ✅ Asegurar que tasks sea un array
   const taskArray = Array.isArray(tasks) ? tasks : [];
