@@ -46,7 +46,8 @@ const Dashboard = () => {
   const handleAdd = async (newTask) => {
     try {
       const response = await api.post('/tasks', newTask);
-      setTasks([...tasks, response.data]);
+      setTasks(prevTasks => [...prevTasks, response.data]);
+      setError('');
     } catch (err) {
       console.error('Error adding task:', err);
       setError('Error al crear la tarea');
@@ -56,7 +57,12 @@ const Dashboard = () => {
   const handleToggle = async (id, completed) => {
     try {
       const response = await api.put(`/tasks/${id}`, { completed: completed ? 1 : 0 });
-      setTasks(tasks.map(t => t.id === id ? response.data : t));
+      setTasks(prevTasks => 
+        prevTasks.map(task => 
+          task.id === id ? response.data : task
+            )
+        );
+      setError('');
     } catch (err) {
       console.error('Error toggling task:', err);
       setError('Error al actualizar la tarea');
@@ -67,7 +73,10 @@ const Dashboard = () => {
     if (!window.confirm('¿Eliminar esta tarea?')) return;
     try {
       await api.delete(`/tasks/${id}`);
-      setTasks(tasks.filter(t => t.id !== id));
+      setTasks(prevTasks => 
+        prevTasks.filter(task => task.id !== id)
+        );
+      setError('');
     } catch (err) {
       console.error('Error deleting task:', err);
       setError('Error al eliminar la tarea');
