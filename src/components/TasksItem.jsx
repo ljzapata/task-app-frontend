@@ -1,4 +1,6 @@
 const TaskItem = ({ task, onToggle, onDelete }) => {
+  console.log('🔍 TaskItem recibió:', task);
+  console.log('🔍 TaskItem task.id:', task.id);
   // ✅ Asegurar que completed sea 0 o 1 (o booleano)
   const isCompleted = task.completed === 1 || task.completed === true;
   

@@ -10,14 +10,18 @@ const TaskList = ({ tasks = [], onToggle, onDelete }) => {
 
   return (
     <ul className="list-group">
-      {taskArray.map((task) => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          onToggle={onToggle}
-          onDelete={onDelete}
-        />
-      ))}
+      {taskArray.map((task) => {
+        console.log('🔍 TaskList mapeando:', task);
+        console.log('🔍 TaskList task.id:', task.id);
+        return (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggle={onToggle}
+            onDelete={onDelete}
+          />
+        )
+      })}
     </ul>
   );
 };
