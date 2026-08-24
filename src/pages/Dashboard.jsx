@@ -24,13 +24,13 @@ const Dashboard = () => {
     setLoading(true);
     try {
       const response = await api.get('/tasks');
-      console.log('📦 Respuesta completa:', response.data);
+        console.log('📦 Datos completos de tasks:', response.data);
+        console.log('📦 Array de tasks:', response.data.tasks);
+        console.log('📦 Primera tarea:', response.data.tasks[0]);
+        console.log('📦 Propiedades de la primera tarea:', Object.keys(response.data.tasks[0] || {}));
       
       // ✅ EXTRAER EL ARRAY tasks DE LA RESPUESTA
       const tasksData = response.data.tasks || [];
-      console.log('📋 Tareas extraídas:', tasksData);
-      console.log('📋 Tipo:', typeof tasksData);
-      console.log('📋 Es array?', Array.isArray(tasksData));
       
       setTasks(tasksData);
       setError('');
