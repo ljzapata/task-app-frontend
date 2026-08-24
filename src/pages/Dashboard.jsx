@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axiosConfig';
-import TaskForm from '../components/TaskForm';
-import TaskList from '../components/TaskList';
+import TaskForm from '../components/TasksForm';
+import TaskList from '../components/TasksList';
 
 const Dashboard = () => {
     const { logout, isAuthenticated } = useAuth();
